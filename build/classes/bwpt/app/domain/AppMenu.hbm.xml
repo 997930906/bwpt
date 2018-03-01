@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bwpt.app.domain.AppMenu" table="tb_appMenu">
+
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="parentId" column="parentId"></property>
+		<property name="name" column="name"></property>
+		<property name="path" column="path"></property>
+		<property name="uploadTime" column="uploadTime"></property>
+		<property name="rank" column="rank"></property>
+		<!-- private Set<User> users = new HashSet<User>(0);//督查督办文件与用户   多对多;  -->
+      	<set name="users" table="user_appMenu">
+	      	<key column="appMenuId"></key>
+	      	<many-to-many class="bwpt.user.domain.User" column="userId"></many-to-many>
+        </set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-cerulean.min.css"/>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+        rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel='stylesheet' type='text/css' href='js/full-calendar/fullcalendar.css' />  
+<!-- <link href="css/style.css" rel="stylesheet"> -->
+<!-- <link href="css/pages/dashboard.css" rel="stylesheet">		 -->
+<style>
+	
+.shortcuts {
+	text-align: center;	
+}
+
+.shortcuts .shortcut { 
+	width: 22.50%;
+	display: inline-block;
+	padding: 12px 0;
+	margin: 0 .9% 1em;
+	vertical-align: top;	
+	
+	text-decoration: none;
+	
+	background: #f9f6f1;
+	
+	border-radius: 5px;
+}
+
+.shortcuts .shortcut .shortcut-icon {
+	margin-top: .25em;
+	margin-bottom: .25em;
+	
+	font-size: 32px;
+	color: #545454;
+}
+
+.shortcuts .shortcut:hover {
+	background: #34A6E7;
+}
+
+.shortcuts .shortcut:hover span{
+	color: #fff;
+}
+
+.shortcuts .shortcut:hover .shortcut-icon {
+	color: #fff;
+}
+
+.shortcuts .shortcut-label {
+	display: block;
+	
+	font-weight: 400;
+	color: #545454;
+}
+
+</style>
+<title>Message Manager</title>
+</head>
+
+	<body>
+		<!-- topbar -->
+	    <div class="navbar navbar-default" role="navigation" >
+
+			<div class="navbar-inner">
+				<a class="navbar-brand" href="#"> <!-- <img
+				alt="Charisma Logo" src="logo20.png" class="hidden-xs" /> --><i class="glyphicon glyphicon-envelope"></i> Message Manager</span>
+				</a>
+<div class="btn-group pull-right cus-main" style="margin-right:15px">
+					<button class="btn btn-default dropdown-toggle"
+						data-toggle="dropdown">
+						<i class="glyphicon glyphicon-user"></i><span
+							class="hidden-sm hidden-xs"> 后台管理</span> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="javascript:void(0);"> 用户名</a></li>
+						<li class="dilider"></li>
+						<li class="divider"></li>
+						<li><a href="#" data-toggle="modal" data-target="#editPswModal">修改密码</a></li>
+						<li><a href="${pageContext.request.contextPath}/login.html">退出系统</a></li>
+					</ul>
+					
+				</div>
+				<ul class="collapse navbar-collapse nav navbar-nav top-menu pull-right">
+					<li><a href="#" ><i class="glyphicon glyphicon-globe"></i>
+							酿造</a></li>
+					<li><a href="#" ><i class="glyphicon glyphicon-globe"></i>
+							包装</a></li>
+					<li><a href="#" ><i class="glyphicon glyphicon-globe"></i>
+					TS</a></li>
+					<li><a href="#" ><i class="glyphicon glyphicon-globe"></i>
+					QA</a></li>
+					<li><a href="#" ><i class="glyphicon glyphicon-globe"></i>
+					历史分析</a></li>
+					<li><a href="#" ><i class="glyphicon glyphicon-globe"></i>
+					系统维护</a></li>
+				</ul> 
+				
+				<!-- user dropdown starts -->
+				
+			</div>		<!--navbar-inner  -->
+		</div>			
+		
+		
+		<div class="container-fluid">
+			<div class="row">
+				
+				<!--第1列 -->
+				<div class="col-md-8">
+			
+					
+					
+				<!-- 	<div class="panel panel-default">
+						<div class="panel-heading"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>操作提示信息</b></div>
+						<div class="panel-body ">
+							<div style="background:#dfd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> <br>
+							<div style="background:#fdd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> <br>
+							<div style="background:#ffd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> <br>
+							<div style="background:#ddd;">提供额外的视觉效果，标识一组按钮中的原始动作</div>  <br>
+							<div style="background:#ffd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> 
+							
+					    </div>
+					</div> -->
+							<div style="height:600px;" id="page1">
+								<canvas id="canvas" style="position:absolute" tabindex="0" ></canvas>
+							</div>
+							
+				<!-- 	<div class="panel panel-default">
+						<div class="panel-heading"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>待办事项</b></div>
+						<div class="panel-body " >
+						    <div id='calendar' >
+							</div> 
+					    </div>
+					</div> -->
+					
+				</div>
+				
+				<!--第2列 -->
+				<div class="col-md-4">
+							<div class="panel panel-default">
+						<div class="panel-heading"> 
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+							<b>报警汇总信息</b>
+						</div>
+						<div class="panel-body shortcuts">
+						    <a href="javascript:;" class="shortcut">
+								<i class="shortcut-icon icon-list-alt"></i>
+								<span class="shortcut-label">ICM</span> 
+							</a>
+							<a href="javascript:;" class="shortcut">
+								<i class="shortcut-icon icon-bookmark"></i>
+								<span class="shortcut-label">SEQU</span> 
+							</a>
+							<a href="javascript:;" class="shortcut">
+								<i class="shortcut-icon icon-signal"></i> 
+								<span class="shortcut-label">AI/AO</span> 
+							</a>
+							<a href="javascript:;" class="shortcut"> 
+								<i class="shortcut-icon icon-comment"></i>
+								<span class="shortcut-label">MANUAL</span> 
+							</a>
+							<a href="javascript:;" class="shortcut">
+								<i class="shortcut-icon icon-user"></i>
+								<span class="shortcut-label">SIMULATION</span> 
+							</a>
+							<a href="javascript:;" class="shortcut">
+								<i class="shortcut-icon icon-file"></i><span class="shortcut-label">PID</span>
+							</a>
+							<a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> 
+								<span class="shortcut-label">INTERLOCK</span> 
+							</a>
+							<a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-tag"></i>
+								<span class="shortcut-label">OTHERS</span> 
+							</a> 
+					    </div>
+					</div>
+					
+					
+					<div class="panel panel-default">
+						<div class="panel-heading"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>操作提示信息</b></div>
+						<div class="panel-body ">
+							<div style="background:#dfd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> <br>
+							<div style="background:#fdd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> <br>
+							<div style="background:#ffd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> <br>
+							<div style="background:#ddd;">提供额外的视觉效果，标识一组按钮中的原始动作</div>  <br>
+							<div style="background:#ffd;">提供额外的视觉效果，标识一组按钮中的原始动作</div> 
+							
+					    </div>
+					</div>
+				
+					<!-- <div class="panel panel-default">
+						<div class="panel-heading"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>手动操作</b></div>
+					
+						<table class="table table-bordered table-striped  table-hover table-condensed">
+								  
+								  <thead>
+									<tr>
+									  <th>时间</th>
+									  <th>设备</th>
+									  <th>信息</th>
+									  <th>单元</th>
+									  <th>持续时间</th>
+									  
+									  
+									</tr>
+								  </thead>
+								    <tbody>
+									<tr>
+									  <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  <td>560001</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									  
+									</tr>
+									<tr>
+									  <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  <td>560001</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									
+									</tr>
+									<tr>
+									  <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  <td>560001</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									 
+									</tr>
+									<tr>
+									  <td>Sachin</td>
+									  <td>Mumbai</td>
+									  <td>400003</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									</tr>
+									<tr>
+									  <td>Uma</td>
+									  <td>Pune</td>
+									  <td>411027</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+								
+									</tr>
+								  </tbody>
+								</table>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>模拟状态</b></div>
+					
+						<table class="table table-bordered table-striped  table-hover table-condensed">
+								  
+								  <thead>
+									<tr>
+									 <th>时间</th>
+									  <th>设备</th>
+									  <th>信息</th>
+									  <th>单元</th>
+									  <th>持续时间</th>
+									  
+									  
+									</tr>
+								  </thead>
+								    <tbody>
+									<tr>
+									  <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  <td>560001</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									  
+									</tr>
+									<tr>
+									  <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  <td>560001</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									</tr>
+									<tr>
+									  <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  <td>560001</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									</tr>
+									<tr>
+									  <td>Sachin</td>
+									  <td>Mumbai</td>
+									  <td>400003</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									</tr>
+									<tr>
+									  <td>Uma</td>
+									  <td>Pune</td>
+									  <td>411027</td>
+									   <td>Tanmay</td>
+									  <td>Bangalore</td>
+									  
+									</tr>
+								  </tbody>
+								</table>
+					</div> -->
+					
+				
+					
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		
+<script type="text/javascript" src="bootstrap/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
+<!-- <script src="js/excanvas.min.js"></script>  -->
+<!-- <script src="js/chart.min.js" type="text/javascript"></script>  -->
+<script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
+<script type="text/javascript">
+	var ccanvas = document.getElementById('canvas'); // 得到画布
+	var cContext = ccanvas.getContext('2d'); // 得到画布的上下文对象
+	var url_bg = "test.png";
+	var bg="#fff url("+url_bg+") no-repeat top left";
+	ccanvas.style.background=bg;
+	ccanvas.style.backgroundSize ="100% 100%";
+	
+	window.addEventListener("resize", resizeCanvas, false);
+	function resizeCanvas() {
+		//alert($('#page1').width());
+		//alert(window.innerHeight);
+	    w = ccanvas.width = $('#page1').width();
+	    h = ccanvas.height =  $('#page1').height();
+	    
+	    resizeDraw();
+	}
+	$(function(){
+		resizeCanvas();
+	})
+</script>
+
+
+<script>     
+        <!--  日期控件-->
+        $(document).ready(function() {
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        var calendar = $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          selectable: true,
+          selectHelper: true,
+          select: function(start, end, allDay) {
+            var title = prompt('Event Title:');
+            if (title) {
+              calendar.fullCalendar('renderEvent',
+                {
+                  title: title,
+                  start: start,
+                  end: end,
+                  allDay: allDay
+                },
+                true // make the event "stick"
+              );
+            }
+            calendar.fullCalendar('unselect');
+          },
+          editable: true,
+          events: [
+            {
+              title: 'All Day Event',
+              start: new Date(y, m, 1)
+            },
+            {
+              title: 'Long Event',
+              start: new Date(y, m, d+5),
+              end: new Date(y, m, d+7)
+            },
+            {
+              id: 999,
+              title: 'Repeating Event',
+              start: new Date(y, m, d-3, 16, 0),
+              allDay: false
+            },
+            {
+              id: 999,
+              title: 'Repeating Event',
+              start: new Date(y, m, d+4, 16, 0),
+              allDay: false
+            },
+            {
+              title: 'Meeting',
+              start: new Date(y, m, d, 10, 30),
+              allDay: false
+            },
+            {
+              title: 'Lunch',
+              start: new Date(y, m, d, 12, 0),
+              end: new Date(y, m, d, 14, 0),
+              allDay: false
+            },
+            {
+              title: 'Birthday Party',
+              start: new Date(y, m, d+1, 19, 0),
+              end: new Date(y, m, d+1, 22, 30),
+              allDay: false
+            },
+            {
+              title: 'by EGrappler',
+              start: new Date(y, m, 28),
+              end: new Date(y, m, 29),
+              url: 'http://by EGrappler/'
+            }
+          ]
+        });
+      });
+    </script><!-- /Calendar -->	
+	
+	</body>
+</html>

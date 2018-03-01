@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bwpt.nz.domain.Message" table="message">
+	
+		<id name="id" column="message_id" >
+			<generator class="native"></generator>
+		</id>
+		<property name="tag" column="tag"></property>
+		<property name="startTime" column="startTime" ></property>
+		<property name="word_time" column="word_time"></property>
+		<property name="word_content" column="word_content"></property>
+		<property name="word_source" column="word_source"></property>
+		<property name="openId" column="openId"></property>
+		<property name="userId" column="userId"></property>
+		<property name="sp" column="SP"></property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery新闻上下滚动超简洁(必看篇)-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<style>
+li{ list-style-type: none; }</style>
+</head>
+<body>
+<div id="broadcast" class="bar" name="giftactive">
+  <div style="float:left"><strong>间隔滚动效果：</strong></div>
+  <div id="demo" style="overflow:hidden;height:22px;line-height:22px;">
+    <ul class="mingdan" id="holder">
+      <li><a href="#" target="_blank">aaaaaa</a></li>
+      <li><a href="#" target="_blank">bbbbbb</a></li>
+      <li><a href="#" target="_blank">cccccc</a></li>
+     
+    </ul>
+  </div>
+</div>
+
+<script>
+function AutoScroll(obj) {
+    $(obj).find("ul:first").animate({
+        marginTop: "-22px"
+    },
+    500,
+    function() {
+        $(this).css({
+            marginTop: "0px"
+        }).find("li:first").appendTo(this);
+    });
+}
+$(function() {
+    setInterval('AutoScroll("#demo")', 3000)
+});
+</script>
+
+</body>
+</html>
