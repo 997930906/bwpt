@@ -25,6 +25,10 @@
 			<result name="insert" type="redirectAction">appMenuAction_list.action</result>
 			<result name="changePlist" type="redirectAction">appMenuAction_plist.action</result>
 		</action>
+		
+		<action name="machineAction_*" class="machineAction" method="{1}">
+			<result name="machineDefineUI">/WEB-INF/jsp/pc/machine/machine_define.jsp</result>
+		</action>
 		<!-- 配置客户的Action，如果Action由Spring框架来管理，class标签上只需要编写ID值就OK -->
 	<!-- 	<action name="customer_*" class="customerAction" method="{1}">
 			<result name="page">/jsp/customer/list.jsp</result>

@@ -95,18 +95,18 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<!-- 配置客户模块 -->
-<!-- 	<bean id="customerAction" class="com.itheima.web.action.CustomerAction" scope="prototype">
-		<property name="customerService" ref="customerService"/>
+	<!-- 配置机器模块 -->
+	<bean id="machineAction" class="bwpt.action.pc.machine.MachineAction" scope="prototype">
+		<property name="machineService" ref="machineService"/>
 	</bean>
 	
-	<bean id="customerService" class="com.itheima.service.CustomerServiceImpl">
-		<property name="customerDao" ref="customerDao"/>
+	<bean id="machineService" class="bwpt.service.pc.machine.MachineServiceImpl">
+		<property name="machineDao" ref="machineDao"/>
 	</bean>
 	
-	<bean id="customerDao" class="com.itheima.dao.CustomerDaoImpl">
+	<bean id="machineDao" class="bwpt.dao.pc.machine.MachineDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean> -->
+	</bean>
 	
 	<!-- 配置用户的模块 -->
 <!-- 	<bean id="userAction" class="com.itheima.web.action.UserAction" scope="prototype">
